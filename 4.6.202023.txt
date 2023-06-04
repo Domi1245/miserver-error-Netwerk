@@ -1,0 +1,132 @@
+ Booting up Velocity 3.2.0-SNAPSHOT (git-e0cf2e21-b257)...
+[17:51:34 INFO]: Loading localizations...
+[17:51:35 INFO]: Connections will use epoll channels, libdeflate (Linux x86_64) compression, OpenSSL 3.0.x (Linux x86_64) ciphers
+[17:51:35 INFO]: Loading plugins...
+[17:51:35 INFO]: Loaded plugin luckperms 5.4.79 by Luck
+[17:51:35 INFO]: Loaded 1 plugins
+[17:51:36 INFO]:         __    
+[17:51:36 INFO]:   |    |__)   LuckPerms v5.4.79
+[17:51:36 INFO]:   |___ |      Running on Velocity - Velocity
+[17:51:36 INFO]: 
+[17:51:36 INFO] [luckperms]: Loading configuration...
+[17:51:36 INFO] [luckperms]: Loading storage provider... [MYSQL]
+[17:51:36 INFO] [me.lucko.luckperms.lib.hikari.HikariDataSource]: luckperms-hikari - Starting...
+[17:51:36 INFO] [me.lucko.luckperms.lib.hikari.HikariDataSource]: luckperms-hikari - Start completed.
+[17:51:41 ERROR] [luckperms]: Failed to init storage implementation
+java.sql.SQLTransientConnectionException: luckperms-hikari - Connection is not available, request timed out after 5001ms.
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.getConnection(HikariPool.java:197) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.getConnection(HikariPool.java:162) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.HikariDataSource.getConnection(HikariDataSource.java:100) ~[?:?]
+        at me.lucko.luckperms.common.storage.implementation.sql.connection.hikari.HikariConnectionFactory.getConnection(HikariConnectionFactory.java:175) ~[?:?]
+        at me.lucko.luckperms.common.storage.implementation.sql.SqlStorage.init(SqlStorage.java:167) ~[?:?]
+        at me.lucko.luckperms.common.storage.Storage.init(Storage.java:115) ~[?:?]
+        at me.lucko.luckperms.common.storage.StorageFactory.getInstance(StorageFactory.java:87) ~[?:?]
+        at me.lucko.luckperms.common.plugin.AbstractLuckPermsPlugin.enable(AbstractLuckPermsPlugin.java:184) ~[?:?]
+        at me.lucko.luckperms.velocity.LPVelocityBootstrap.onEnable(LPVelocityBootstrap.java:140) ~[?:?]
+        at me.lucko.luckperms.velocity.Lmbda$1.execute(Unknown Source) ~[?:?]
+        at com.velocitypowered.proxy.event.UntargetedEventHandler$VoidHandler.lambda$buildHandler$0(UntargetedEventHandler.java:56) ~[server.jar:3.2.0-SNAPSHOT (git-e0cf2e21-b257)]
+        at com.velocitypowered.proxy.event.VelocityEventManager.fire(VelocityEventManager.java:597) ~[server.jar:3.2.0-SNAPSHOT (git-e0cf2e21-b257)]
+        at com.velocitypowered.proxy.event.VelocityEventManager.lambda$fire$5(VelocityEventManager.java:478) ~[server.jar:3.2.0-SNAPSHOT (git-e0cf2e21-b257)]
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?]
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?]
+        at java.lang.Thread.run(Thread.java:833) [?:?]
+Caused by: java.sql.SQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:833) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:453) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.access$100(HikariPool.java:71) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:726) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712) ~[?:?]
+        at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[?:?]
+        ... 3 more
+[17:51:41 INFO] [luckperms]: Loading messaging service... [SQL]
+[17:51:46 ERROR] [luckperms]: Exception occurred whilst enabling SQL messaging service
+java.lang.RuntimeException: java.sql.SQLTransientConnectionException: luckperms-hikari - Connection is not available, request timed out after 5000ms.
+        at me.lucko.luckperms.common.messaging.sql.SqlMessenger.init(SqlMessenger.java:56) ~[?:?]
+        at me.lucko.luckperms.common.messaging.MessagingFactory$SqlMessengerProvider.obtain(MessagingFactory.java:249) ~[?:?]
+        at me.lucko.luckperms.common.messaging.LuckPermsMessagingService.<init>(LuckPermsMessagingService.java:68) ~[?:?]
+        at me.lucko.luckperms.common.messaging.MessagingFactory.getServiceFor(MessagingFactory.java:141) ~[?:?]
+        at me.lucko.luckperms.velocity.messaging.VelocityMessagingFactory.getServiceFor(VelocityMessagingFactory.java:52) ~[?:?]
+        at me.lucko.luckperms.common.messaging.MessagingFactory.getInstance(MessagingFactory.java:100) ~[?:?]
+        at me.lucko.luckperms.common.plugin.AbstractLuckPermsPlugin.enable(AbstractLuckPermsPlugin.java:185) ~[?:?]
+        at me.lucko.luckperms.velocity.LPVelocityBootstrap.onEnable(LPVelocityBootstrap.java:140) ~[?:?]
+        at me.lucko.luckperms.velocity.Lmbda$1.execute(Unknown Source) ~[?:?]
+        at com.velocitypowered.proxy.event.UntargetedEventHandler$VoidHandler.lambda$buildHandler$0(UntargetedEventHandler.java:56) ~[server.jar:3.2.0-SNAPSHOT (git-e0cf2e21-b257)]
+        at com.velocitypowered.proxy.event.VelocityEventManager.fire(VelocityEventManager.java:597) ~[server.jar:3.2.0-SNAPSHOT (git-e0cf2e21-b257)]
+        at com.velocitypowered.proxy.event.VelocityEventManager.lambda$fire$5(VelocityEventManager.java:478) ~[server.jar:3.2.0-SNAPSHOT (git-e0cf2e21-b257)]
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?]
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?]
+        at java.lang.Thread.run(Thread.java:833) [?:?]
+Caused by: java.sql.SQLTransientConnectionException: luckperms-hikari - Connection is not available, request timed out after 5000ms.
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.getConnection(HikariPool.java:197) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.getConnection(HikariPool.java:162) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.HikariDataSource.getConnection(HikariDataSource.java:100) ~[?:?]
+        at me.lucko.luckperms.common.storage.implementation.sql.connection.hikari.HikariConnectionFactory.getConnection(HikariConnectionFactory.java:175) ~[?:?]
+        at me.lucko.luckperms.common.messaging.sql.SqlMessenger.getConnection(SqlMessenger.java:84) ~[?:?]
+        at me.lucko.luckperms.common.messaging.sql.AbstractSqlMessenger.init(AbstractSqlMessenger.java:60) ~[?:?]
+        at me.lucko.luckperms.common.messaging.sql.SqlMessenger.init(SqlMessenger.java:54) ~[?:?]
+        ... 14 more
+Caused by: java.sql.SQLNonTransientConnectionException: Too many connections
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:833) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:453) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246) ~[?:?]
+        at me.lucko.luckperms.lib.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool.access$100(HikariPool.java:71) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:726) ~[?:?]
+        at me.lucko.luckperms.lib.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712) ~[?:?]
+        at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[?:?]
+        ... 3 more
+[17:51:46 WARN] [luckperms]: Messaging service 'sql' not recognised.
+[17:51:46 INFO] [luckperms]: Loading internal permission managers...
+[17:51:47 INFO] [luckperms]: Performing initial data load...
+[17:51:52 ERROR]: java.util.concurrent.CompletionException: java.sql.SQLTransientConnectionException: luckperms-hikari - Connection is not available, request timed out after 5000ms.
+[17:51:52 ERROR]:       at me.lucko.luckperms.common.storage.Storage.lambda$future$1(Storage.java:104)
+[17:51:52 ERROR]:       at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+[17:51:52 ERROR]:       at com.velocitypowered.proxy.scheduler.VelocityScheduler$VelocityTask.lambda$run$0(VelocityScheduler.java:275)
+[17:51:52 ERROR]:       at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[17:51:52 ERROR]:       at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[17:51:52 ERROR]:       at java.base/java.lang.Thread.run(Thread.java:833)
+[17:51:52 ERROR]: Caused by: java.sql.SQLTransientConnectionException: luckperms-hikari - Connection is not available, request timed out after 5000ms.
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.HikariPool.getConnection(HikariPool.java:197)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.HikariPool.getConnection(HikariPool.java:162)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.HikariDataSource.getConnection(HikariDataSource.java:100)
+[17:51:52 ERROR]:       at me.lucko.luckperms.common.storage.implementation.sql.connection.hikari.HikariConnectionFactory.getConnection(HikariConnectionFactory.java:175)
+[17:51:52 ERROR]:       at me.lucko.luckperms.common.storage.implementation.sql.SqlStorage.loadAllGroups(SqlStorage.java:501)
+[17:51:52 ERROR]:       at me.lucko.luckperms.common.storage.Storage.lambda$loadAllGroups$11(Storage.java:203)
+[17:51:52 ERROR]:       at me.lucko.luckperms.common.storage.Storage.lambda$future$1(Storage.java:99)
+[17:51:52 ERROR]:       ... 5 more
+[17:51:52 ERROR]: Caused by: java.sql.SQLNonTransientConnectionException: Too many connections
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:833)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:453)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.HikariPool.access$100(HikariPool.java:71)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:726)
+[17:51:52 ERROR]:       at me.lucko.luckperms.lib.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+[17:51:52 ERROR]:       at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[17:51:52 ERROR]:       ... 3 more
+[17:51:52 INFO] [luckperms]: Successfully enabled. (took 16413ms)
+[17:51:52 INFO]: Listening on 
+[17:51:52 INFO]: Done (18.47s)!
